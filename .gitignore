@@ -1,0 +1,30 @@
+__pycache__/
+*.py[cod]
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+venv/
+.venv/
+env/
+.idea/
+.vscode/
+.cursor/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+*.log
+.env
+wetag_repos/
+video/
+# 本地 MCP 声明（含 token），模板见 mcp.example.json
+mcp.json
+
+# workspace 配置属于部署侧，仅提交示例
+config/workspaces/*.yaml
+!config/workspaces/demo.yaml
+
+# 开源规划（内部文档）
+docs/open-source-plan.md

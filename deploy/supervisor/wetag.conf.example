@@ -1,0 +1,18 @@
+; 一个 workspace 一个进程。复制本文件为 wetag-<workspace>.conf，替换 demo 与端口。
+; 全机 LLM 并发 = LLM_MAX_CONCURRENCY × 进程数。
+
+[program:wetag-demo]
+command=python3 -m app.bootstrap
+directory=/opt/wetag
+autostart=true
+autorestart=true
+startsecs=10
+stopasgroup=true
+killasgroup=true
+stdout_logfile=/var/log/wetag/demo.out.log
+stderr_logfile=/var/log/wetag/demo.err.log
+environment=
+    WORKSPACE_ID=demo,
+    WETAG_HTTP_PORT=8080,
+    PG_DSN="postgresql://wetag_ws_demo:${WS_DEMO_PASSWORD}@localhost:5432/wetag",
+    LLM_MAX_CONCURRENCY=4

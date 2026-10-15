@@ -1,0 +1,51 @@
+# 快速体验：docker compose up -d
+# 需先 cp .env.example .env 并填写 API_KEY / WECOM_BOT_ID / WECOM_BOT_SECRET / WS_DB_PASSWORD
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${PG_ADMIN_PASSWORD:-postgres}
+      POSTGRES_DB: wetag
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d wetag"]
+      interval: 5s
+      retries: 20
+
+  # 一次性：建 org / workspace schema、业务线角色并跑迁移（幂等）
+  init:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PG_ADMIN_DSN: postgresql://postgres:${PG_ADMIN_PASSWORD:-postgres}@db:5432/wetag
+    command:
+      - sh
+      - -c
+      - python scripts/init_workspace.py --apply-org --workspace "${WORKSPACE_ID:-demo}" --password "$${WS_DB_PASSWORD:?请在 .env 设置 WS_DB_PASSWORD}"
+    env_file: .env
+    restart: "no"
+
+  wetag:
+    build: .
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    env_file: .env
+    environment:
+      PG_DSN: postgresql://wetag_ws_${WORKSPACE_ID:-demo}:${WS_DB_PASSWORD}@db:5432/wetag
+      PG_ADMIN_DSN: ""
+    ports:
+      - "${WETAG_HTTP_PORT:-8080}:8080"
+    volumes:
+      # lark-cli / wecom-cli 的登录态
+      - cli-home:/root
+      - ./config/workspaces:/app/config/workspaces:ro
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  cli-home:

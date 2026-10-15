@@ -1,0 +1,13 @@
+.git
+.venv
+venv
+**/__pycache__
+.env
+mcp.json
+config/workspaces/*.yaml
+!config/workspaces/demo.yaml
+video
+wetag_repos
+specs
+tests
+docs

@@ -1,0 +1,26 @@
+# 一个 workspace 一个进程。键按层级拼成大写环境变量名：tapd.project_id → TAPD_PROJECT_ID
+# 值中的 ${VAR} 会按环境变量展开；机密请放 .env，不要写在这里。
+
+organization_id: default
+bot_name: WeTag
+
+# 启用的外部集成；未列出的不装配端口、不注册工具、不调度轮询
+integrations: [tapd, lark, wecom]
+
+wecom:
+  bot_id: ${WECOM_BOT_ID}
+
+tapd:
+  project_id: ""            # TAPD 项目 ID，留空则不启用需求相关能力
+  project_name: ""          # 审批卡片上代替项目 ID 展示
+
+lark:
+  web_base: https://feishu.cn          # 租户域名，如 https://example.feishu.cn
+  new_doc_parent: ""                   # 新建文档的知识库父节点 URL
+
+repo:
+  root: ""                  # 只读代码仓本地路径，留空则不启用代码搜索
+  branch: main
+
+memory:
+  collection_name: wetag_demo

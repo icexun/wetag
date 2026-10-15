@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wetag"
+version = "0.1.0"
+description = "企业微信智能协作助理：群聊问答、待办、文档与需求协作（TAPD / 飞书 / 企微）"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "icexun" }]
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Framework :: AsyncIO",
+]
+dependencies = [
+    "agentrun-sdk[server,agentscope,mcp]>=0.0.20",
+    # AgentScope 2.x 移除了 ReActAgent / OpenAIChatModel 等名字
+    "agentscope>=1.0.0,<2.0.0",
+    "python-dotenv>=1.0",
+    "requests>=2.31.0",
+    "pydantic>=2.11.0",
+    "httpx>=0.28.0",
+    "mcp>=1.2.0",
+    "wecom-aibot-python-sdk>=1.0.2",
+    "websockets>=13.0",
+    "asyncpg>=0.30.0",
+    "psycopg[binary]>=3.2",
+    # 4.x 的 jobstore 装配方式不兼容
+    "APScheduler>=3.11,<4",
+    "SQLAlchemy>=2.0",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+otel = ["opentelemetry-api>=1.25"]
+dev = ["pytest>=8.3", "pytest-asyncio>=0.24", "pyflakes>=3.2"]
+
+[project.urls]
+Homepage = "https://github.com/icexun/wetag"
+Issues = "https://github.com/icexun/wetag/issues"
+
+[tool.setuptools.packages.find]
+include = ["app*", "config*", "migrations*"]
+
+[tool.setuptools]
+py-modules = ["main", "utils"]

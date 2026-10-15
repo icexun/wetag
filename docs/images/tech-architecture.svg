@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" font-family="PingFang SC, Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8f959e"/></marker></defs>
+  <rect width="960" height="640" fill="#ffffff"/>
+
+  <g font-size="13" fill="#1f2329">
+    <rect x="30" y="20" width="680" height="50" rx="10" fill="#f2f7ff" stroke="#3370ff" stroke-width="1.5"/>
+    <text x="370" y="50" text-anchor="middle" font-weight="700">企业微信智能机器人（WebSocket 长连接）</text>
+    <path d="M370 72 L370 90" stroke="#8f959e" stroke-width="2" marker-end="url(#a)"/>
+
+    <rect x="30" y="96" width="680" height="56" rx="10" fill="#eef1ff" stroke="#3370ff"/>
+    <text x="50" y="129" font-weight="700" fill="#3370ff">gateway</text>
+    <text x="400" y="129" text-anchor="middle">Channel 收消息 · 鉴权 · 回复卡片 / Markdown</text>
+    <path d="M370 154 L370 172" stroke="#8f959e" stroke-width="2" marker-end="url(#a)"/>
+
+    <rect x="30" y="178" width="680" height="56" rx="10" fill="#e8f7f1" stroke="#1fa67a"/>
+    <text x="50" y="211" font-weight="700" fill="#1fa67a">space</text>
+    <text x="400" y="211" text-anchor="middle">组织 / 业务线 / 群 / 事项 · 事项路由 · 上下文组装</text>
+    <path d="M370 236 L370 254" stroke="#8f959e" stroke-width="2" marker-end="url(#a)"/>
+
+    <rect x="30" y="260" width="680" height="120" rx="10" fill="#f4f0ff" stroke="#7b5cff"/>
+    <text x="50" y="288" font-weight="700" fill="#7b5cff">capability</text>
+    <g text-anchor="middle">
+      <rect x="50" y="300" width="150" height="60" rx="8" fill="#fff" stroke="#cfc3ff"/><text x="125" y="335">Router 意图分流</text>
+      <rect x="215" y="300" width="150" height="60" rx="8" fill="#fff" stroke="#cfc3ff"/><text x="290" y="335">Workflow 确定性流程</text>
+      <rect x="380" y="300" width="150" height="60" rx="8" fill="#fff" stroke="#cfc3ff"/><text x="455" y="335">ReAct Agent + 工具</text>
+      <rect x="545" y="300" width="145" height="60" rx="8" fill="#fff" stroke="#cfc3ff"/><text x="617" y="335">Integration Ports</text>
+    </g>
+    <path d="M370 382 L370 400" stroke="#8f959e" stroke-width="2" marker-end="url(#a)"/>
+
+    <rect x="30" y="406" width="680" height="56" rx="10" fill="#fff5e6" stroke="#f5a623"/>
+    <text x="50" y="439" font-weight="700" fill="#d48806">control</text>
+    <text x="400" y="439" text-anchor="middle">审批分级 · 记忆 · Rules · 审计</text>
+    <path d="M370 464 L370 482" stroke="#8f959e" stroke-width="2" marker-end="url(#a)"/>
+
+    <rect x="30" y="488" width="680" height="56" rx="10" fill="#f5f6f7" stroke="#8f959e"/>
+    <text x="50" y="521" font-weight="700" fill="#646a73">platform</text>
+    <text x="400" y="521" text-anchor="middle">CliExecutor 白名单执行 · 凭据仅经子进程 env 注入</text>
+    <path d="M370 546 L370 564" stroke="#8f959e" stroke-width="2" marker-end="url(#a)"/>
+
+    <g text-anchor="middle">
+      <rect x="30" y="570" width="160" height="44" rx="8" fill="#fff" stroke="#c9cdd4"/><text x="110" y="597">wecom-cli</text>
+      <rect x="203" y="570" width="160" height="44" rx="8" fill="#fff" stroke="#c9cdd4"/><text x="283" y="597">lark-cli</text>
+      <rect x="376" y="570" width="160" height="44" rx="8" fill="#fff" stroke="#c9cdd4"/><text x="456" y="597">tapd-cli</text>
+      <rect x="549" y="570" width="161" height="44" rx="8" fill="#fff" stroke="#c9cdd4"/><text x="630" y="597">代码仓 / MCP</text>
+    </g>
+
+    <rect x="740" y="96" width="190" height="448" rx="10" fill="#fdf2f2" stroke="#e65c5c"/>
+    <text x="835" y="124" text-anchor="middle" font-weight="700" fill="#d14343">runtime（横切）</text>
+    <g text-anchor="middle">
+      <rect x="755" y="140" width="160" height="44" rx="8" fill="#fff" stroke="#f2b8b8"/><text x="835" y="167">Task 队列</text>
+      <rect x="755" y="194" width="160" height="44" rx="8" fill="#fff" stroke="#f2b8b8"/><text x="835" y="221">WorkerPool</text>
+      <rect x="755" y="248" width="160" height="44" rx="8" fill="#fff" stroke="#f2b8b8"/><text x="835" y="275">Scheduler 定时 Job</text>
+      <rect x="755" y="302" width="160" height="44" rx="8" fill="#fff" stroke="#f2b8b8"/><text x="835" y="329">Outbox 可靠投递</text>
+    </g>
+    <text x="835" y="380" text-anchor="middle" font-weight="700" fill="#646a73">基础设施</text>
+    <g text-anchor="middle" font-size="12">
+      <rect x="755" y="392" width="160" height="40" rx="8" fill="#fff" stroke="#c9cdd4"/><text x="835" y="417">PostgreSQL 分 schema</text>
+      <rect x="755" y="440" width="160" height="40" rx="8" fill="#fff" stroke="#c9cdd4"/><text x="835" y="465">OpenAI 兼容模型</text>
+      <rect x="755" y="488" width="160" height="40" rx="8" fill="#fff" stroke="#c9cdd4"/><text x="835" y="513">analytics 只读统计</text>
+    </g>
+  </g>
+</svg>

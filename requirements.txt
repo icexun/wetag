@@ -1,0 +1,2 @@
+# 依赖以 pyproject.toml 为准；本文件供 `pip install -r requirements.txt` 习惯用法
+-e .[dev]
